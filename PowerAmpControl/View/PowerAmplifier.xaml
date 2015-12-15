@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="PowerAmpControl.View.PowerAmplifier"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:viewModel="clr-namespace:PowerAmpControl.ViewModel"
+             xmlns:c="clr-namespace:PowerAmpControl.Converter"
+             DataContext="{Binding PowerAmplifier, Source={StaticResource Locator}}"
+             mc:Ignorable="d" VerticalAlignment="Center" HorizontalAlignment="Center" >
+
+    <StackPanel Orientation="Vertical" Margin="0,0,0,0" VerticalAlignment="Center" Width="210" Height="152" HorizontalAlignment="Center">
+        <StackPanel Orientation="Horizontal" Margin="5,0,0,0" VerticalAlignment="Center">
+            <Label Content="终端" VerticalAlignment="Center"/>
+            <Label Content="{Binding SelectedTerminal.Terminal}"  VerticalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <ItemsControl Margin="2,0" ItemsSource="{Binding PowerAmplifierModels}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical" Margin="5,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox TextWrapping="Wrap" Text="{Binding Value}" VerticalAlignment="Center"  Width="30" TextAlignment="Center"/>
+                                <Label Content="{Binding Unit}"/>
+                                <Button Content="设置" Height="20" Command="{Binding CurrentSetCommand}" Margin="5,0,5,0" Width="40"/>
+                                <Button Content="获取" Height="20" Command="{Binding CurrentGetCommand}" Width="40"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <Button Content="{Binding LaserSwitchName.SwitchNameString}" Margin="0,0,0,0" Command="{Binding SwitchCommand}" Height="20" Width="40"/>
+        </StackPanel>
+        <!--<Border Height="10" BorderBrush="Gray"/>-->
+        <GroupBox  DockPanel.Dock="Top" Header="返回信息" BorderBrush="Gray" Height="102.5">
+            <ItemsControl Margin="10,0" ItemsSource="{Binding PrintModels}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Info}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </GroupBox>
+    </StackPanel>
+</UserControl>
