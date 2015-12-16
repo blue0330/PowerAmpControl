@@ -11,7 +11,9 @@
     <StackPanel Orientation="Vertical" Margin="0,0,0,0" VerticalAlignment="Center" Width="210" Height="152" HorizontalAlignment="Center">
         <StackPanel Orientation="Horizontal" Margin="5,0,0,0" VerticalAlignment="Center">
             <Label Content="终端" VerticalAlignment="Center"/>
-            <Label Content="{Binding SelectedTerminal.Terminal}"  VerticalAlignment="Center"/>
+            <Label Content="{Binding SelectedTerminal.Terminal}"  VerticalAlignment="Center" Width="100"/>
+            <RadioButton Content="旧" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <RadioButton Content="新" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <ItemsControl Margin="2,0" ItemsSource="{Binding PowerAmplifierModels}">
